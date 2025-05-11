@@ -1,6 +1,7 @@
 import pygame
 class CircleShape(pygame.sprite.Sprite):
-    def __init__(self, x, y, radius):
+    def __init__(self, x, y, radius, *groups):
+        super().__init__(*groups)
         self.radius = radius
         self.position = pygame.Vector2(x,y)
         self.velocity = pygame.Vector2(0,0)
