@@ -6,7 +6,7 @@ class CircleShape(pygame.sprite.Sprite):
         self.position = pygame.Vector2(x,y)
         self.velocity = pygame.Vector2(0,0)
         if hasattr(self,"containers"):
-            super().__init__()
+            super().__init__(self.containers)
         else :
             super().__init__()
     
@@ -18,8 +18,5 @@ class CircleShape(pygame.sprite.Sprite):
         pass
 
     def collision_check(self, target):
-        distance = pygame.math.Vector2.distance_to(self.position,target.position)
-        if distance <= (self.radius+target.radius):
-            return True
-        else :
-            return False
+        distance = self.position.distance_to(target.position)
+        return distance <= (self.radius + target.radius)
